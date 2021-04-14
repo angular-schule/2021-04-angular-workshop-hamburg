@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  books: string[];
+
+  // ExpressionChangedAfterItHasBeenCheckedError kann hier nicht entdeckt werden
   constructor() { }
 
   ngOnInit(): void {
+    this.books = ['Angular', 'AngularJS', 'jQuery'];
   }
+
 
 }
