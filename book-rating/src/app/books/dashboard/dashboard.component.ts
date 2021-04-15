@@ -11,7 +11,8 @@ export class DashboardComponent implements OnInit {
   books: Book[];
 
   // ExpressionChangedAfterItHasBeenCheckedError kann hier nicht entdeckt werden
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.books = [{
@@ -32,5 +33,11 @@ export class DashboardComponent implements OnInit {
     }];
   }
 
+  doRateDown(book: Book): void {
+    console.table(book);
+  }
 
+  doRateUp(book: Book): void {
+    console.table(book);
+  }
 }
