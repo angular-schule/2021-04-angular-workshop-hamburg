@@ -1,3 +1,13 @@
-<br-book [book]="books[0]"></br-book>
-<br-book [book]="books[1]"></br-book>
-<br-book [book]="books[2]"></br-book>
+<!-- <br-book
+  *ngFor="let b of books"
+  [book]="b"
+></br-book> -->
+
+
+
+<div *ngFor="let b of books; even as e"
+     [ngClass]="{ grayBackground: e }">
+  <br-book
+    [book]="b"
+  ></br-book>
+</div>
