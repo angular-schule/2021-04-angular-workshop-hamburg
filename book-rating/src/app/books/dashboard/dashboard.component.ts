@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../shared/book';
+import { BookRatingService } from '../shared/book-rating.service';
 
 @Component({
   selector: 'br-dashboard',
@@ -10,8 +11,8 @@ export class DashboardComponent implements OnInit {
 
   books: Book[];
 
-  // ExpressionChangedAfterItHasBeenCheckedError kann hier nicht entdeckt werden
-  constructor() {
+  constructor(private br: BookRatingService) {
+
   }
 
   ngOnInit(): void {
@@ -34,10 +35,18 @@ export class DashboardComponent implements OnInit {
   }
 
   doRateDown(book: Book): void {
-    console.table(book);
+    const ratedBook = this.br.rateDown(book);
+    this.updateAndSortBooks(ratedBook);
   }
 
   doRateUp(book: Book): void {
-    console.table(book);
+    const ratedBook = this.br.rateUp(book);
+    this.updateAndSortBooks(ratedBook);
+  }
+
+  updateAndSortBooks(ratedBook: Book): void {
+    this.books = this.books
+      .map(b => b.isbn === ratedBook.isbn ? ratedBook : b)
+      .sort((a, b) => b.rating - a.rating);
   }
 }
