@@ -1,0 +1,10 @@
+img {
+  width: 100px;
+  will-change: transform;
+  transition: transform 0.3s ease-out;
+  box-shadow: 10px 10px 5px grey;
+}
+
+img:hover {
+  transform: rotate(-5deg) scale(1.5);
+}
