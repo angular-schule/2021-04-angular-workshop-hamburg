@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Book } from '../shared/book';
 
 @Component({
   selector: 'br-create-book',
@@ -8,13 +9,16 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class CreateBookComponent {
 
+  @Output()
+  create = new EventEmitter<Book>();
+
   bookForm = new FormGroup({
-    isbn: new FormControl('xxx', [
+    isbn: new FormControl('', [
       Validators.required,
       Validators.minLength(3)
     ]),
     title: new FormControl('', Validators.required),
-    description: new FormControl(),
+    description: new FormControl()
   });
 
   isValid(name: string): boolean {
@@ -29,11 +33,7 @@ export class CreateBookComponent {
       rating: 1
     };
 
-    // ## Hands On
-    // 1. deklariere ein Event mit dem Namen `create`
-    // 2. emittiere das Event `create`
-    // 3. binde auf das Event in der `DashboardComponent`
-    // 4. füge das neue Buch dem Buch-Array hinzu
+    this.create.emit(newBook);
 
     this.bookForm.reset();
   }
