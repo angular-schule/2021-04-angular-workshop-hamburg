@@ -17,3 +17,12 @@ $enable-rounded: false !default;
 //   border-color: black;
 // }
 
+
+
+.nav div {
+  padding: 5px;
+}
+.super-nav {
+  @extend .nav;
+  border: 1px solid red;
+}

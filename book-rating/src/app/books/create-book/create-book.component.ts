@@ -37,4 +37,11 @@ export class CreateBookComponent {
 
     this.bookForm.reset();
   }
+
+  // patchBook({ title, description }: Book) {
+  //   this.bookForm.patchValue({
+  //     title,
+  //     description
+  //   });
+  // }
 }
