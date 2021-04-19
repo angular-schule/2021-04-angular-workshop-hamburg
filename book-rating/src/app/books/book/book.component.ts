@@ -24,4 +24,8 @@ export class BookComponent {
   doRateUp(): void {
     this.rateUp.emit(this.book);
   }
+
+  get stars(): undefined[] {
+    return new Array(this.book.rating);
+  }
 }

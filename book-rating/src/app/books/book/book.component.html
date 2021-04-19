@@ -6,12 +6,16 @@
     <div class="card-title">
       <h2>
         {{ book.title }}
-        <span class="badge badge-secondary">{{ book.rating }}</span>
+        <span class="badge badge-secondary">
+          <ng-container *ngFor="let s of stars">
+            ⭐️
+          </ng-container>
+        </span>
       </h2>
     </div>
     <p>{{ book.description }}</p>
 
-    <button [disabled]="true" (click)="doRateDown()" class="btn btn-primary mr-2">-1</button>
+    <button (click)="doRateDown()" class="btn btn-primary mr-2">-1</button>
     <button (click)="doRateUp()" class="btn btn-primary">+1</button>
   </div>
 </div>
