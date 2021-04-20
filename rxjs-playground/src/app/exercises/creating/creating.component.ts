@@ -23,15 +23,35 @@ export class CreatingComponent implements OnInit {
 
     /******************************/
 
+    // 2.
     const observer = {
       next: e => this.log(e),
       error: err => this.log('ERROR: ' + err),
       complete: () => this.log('COMPLETE')
     };
 
-    const observable = of('😃', '😎', '🤬');
-    observable.subscribe(observer);
+    // 1.
+    // const observable = of('😃', '😎', '🤬');
+    const observable = new Observable<string>(subscriber => {
 
+      debugger;
+      subscriber.next('😃');
+      const x1 = setTimeout(() => subscriber.next('😳'), 1000);
+      const x2 = setTimeout(() => { subscriber.next('💩'), console.log('AHHHH Zombie code!') }, 2000);
+      const x3 = setTimeout(() => subscriber.error('BOOHH!'), 3000);
+      const x4 = setTimeout(() => subscriber.next('😳'), 4000);
+
+      return () => {
+        clearTimeout(x1);
+        clearTimeout(x2);
+        clearTimeout(x3);
+        clearTimeout(x4);
+      }
+    });
+
+    // 3.
+    const subscription = observable.subscribe(observer);
+    setTimeout(() => subscription.unsubscribe(), 1000);
 
     /******************************/
   }
