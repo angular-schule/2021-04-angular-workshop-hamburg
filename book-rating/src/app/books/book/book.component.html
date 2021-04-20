@@ -2,6 +2,7 @@
 <div class="card mb-4">
   <div class="card-body bg-light">
       <img class="float-right"
+        alt="Image of a cat"
         src="//api.angular.schule/avatar/{{ book.rating }}">
     <div class="card-title">
       <h2>
@@ -17,5 +18,6 @@
 
     <button (click)="doRateDown()" class="btn btn-primary mr-2">-1</button>
     <button (click)="doRateUp()" class="btn btn-primary">+1</button>
+    <a [routerLink]="['/books', book.isbn]" class="btn btn-secondary ml-2">Details</a>
   </div>
 </div>
