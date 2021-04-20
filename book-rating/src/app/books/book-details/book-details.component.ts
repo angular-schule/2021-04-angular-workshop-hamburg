@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,8 +11,7 @@ export class BookDetailsComponent {
   isbn: string;
 
   constructor(private router: ActivatedRoute) {
-
-    this.isbn = router.snapshot.paramMap.get('isbn');
+    router.paramMap.subscribe(param => this.isbn = param.get('isbn'));
   }
 
 }
