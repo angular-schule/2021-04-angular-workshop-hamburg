@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ReplaySubject, throwError, of } from 'rxjs';
+import { ReplaySubject, throwError, of, EMPTY } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
 import { ExerciseService } from '../exercise.service';
@@ -19,7 +19,7 @@ export class ErrorHandlingComponent {
    * Probiere verschiedene Strategien aus, um den Fehler zu behandeln:
    * - wiederholen
    * - Fehler weiterwerfen
-   * - Fehler umwandeln (in ein normales Element)
+   * - Fehler umwandeln (in ein normales Element)  ---> neuer Text: 'Catched the error! ☺️'
    * - Fehler verschlucken/ignorieren
    */
 
@@ -28,7 +28,12 @@ export class ErrorHandlingComponent {
 
       /******************************/
 
-      
+      // retry(3),
+      //catchError(err => of('Catched the error! 😊'))
+      // catchError(err => throwError('still error'))
+      catchError(err => EMPTY)
+
+
       /******************************/
 
     ).subscribe({

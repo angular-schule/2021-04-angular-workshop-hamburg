@@ -18,11 +18,11 @@ export class BookComponent {
   rateUp = new EventEmitter<Book>();
 
   doRateDown(): void {
-    this.rateDown.emit(this.book);
+    this.rateDown.next(this.book);
   }
 
   doRateUp(): void {
-    this.rateUp.emit(this.book);
+    this.rateUp.next(this.book);
   }
 
   get stars(): undefined[] {
