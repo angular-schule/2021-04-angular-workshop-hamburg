@@ -7,6 +7,8 @@
     {{ book.description }}
   </p>
 
+  <br>
+
   <button (click)="showDetails = !showDetails">
     Toggle Details
   </button>
@@ -17,4 +19,7 @@
   Warte auf das erste Buch...
 </ng-template>
 
+<hr>
+
 <a routerLink="/books/9783864907845">Go to 9783864907845</a><br>
+<a routerLink="/books/404">Go to 404</a><br>
