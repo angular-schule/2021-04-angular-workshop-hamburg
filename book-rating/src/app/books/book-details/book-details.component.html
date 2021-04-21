@@ -1,28 +1,20 @@
 <ng-container *ngIf="book$ | async as book; else showLoading">
 
   <h2>{{ book.title }}</h2>
-  ISBN: {{ book.isbn }}
+  <h6>#{{ book.isbn }}</h6>
 
-  <p *ngIf="showDetails">
-    {{ book.description }}
+  <p>
+  {{ book.description }}
   </p>
-
   <br>
-
-  <button
-    [disabled]="loading"
-    (click)="showDetails = !showDetails">
-    Toggle Details
-  </button>
 
 </ng-container>
 
 <ng-template #showLoading>
-  Warte auf das erste Buch...
+  Lade Bücher...
 </ng-template>
 
 <hr>
-
 
 <a routerLink="/books/9783864907845">Go to 9783864907845</a><br>
 <a routerLink="/books/404">Go to 404</a><br>
