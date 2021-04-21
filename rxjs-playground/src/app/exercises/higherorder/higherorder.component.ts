@@ -30,7 +30,7 @@ export class HigherorderComponent implements OnInit {
     /**************!!**************/
 
     this.result$ = this.source$.pipe(
-      concatMap(tier => this.es.echo(tier, 5))
+      switchMap(tier => this.es.echo(tier, 5))
     );
 
     /**************!!**************/
