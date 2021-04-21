@@ -12,19 +12,12 @@ import { BookStoreService } from '../shared/book-store.service';
 export class BookDetailsComponent {
 
   isbn$ = this.router.paramMap.pipe(
-    map(paramMap => paramMap.get('isbn'))
+    map(paramMap => paramMap.get('isbn')),
+    map(isbn => this.bs.getSingle(isbn))
   );
 
   constructor(private router: ActivatedRoute,
               private bs: BookStoreService) {
-
-      // das bitte nicht mitschreiben! 😱
-
-    this.router.paramMap.pipe(
-      map(paramMap => paramMap.get('isbn')),
-      map(isbn => this.bs.getSingle(isbn))
-    ).subscribe(book$ =>
-      book$.subscribe(console.log));
   }
 
 }
