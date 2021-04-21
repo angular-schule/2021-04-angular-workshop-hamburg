@@ -13,8 +13,7 @@ export class BookDetailsComponent {
 
   book$ = this.router.paramMap.pipe(
     map(paramMap => paramMap.get('isbn')),
-    switchMap(isbn => this.bs.getSingle(isbn)),
-    shareReplay(1)
+    switchMap(isbn => this.bs.getSingle(isbn))
   );
 
   showDetails = false;
